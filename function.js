@@ -3,6 +3,7 @@ let board = document.querySelector(".board")
 let player = document.querySelector(".player")
 let playAgain = document.querySelector(".playAgain")
 let box = 0
+let gameover = false;
 let winningArray = [
     [0, 1, 2, 3], [41, 40, 39, 38], [7, 8, 9, 10],
     [34, 33, 32, 31], [14, 15, 16, 17], [27, 26, 25, 24],
@@ -70,6 +71,7 @@ function createBoard() {
 
 // Click board function
 function clickBox() {
+    if (gameover) { return; }
     let squares = document.querySelectorAll(".board div");
     let click = parseInt(this.dataset.id);
     if (squares[click + 7].classList.contains("taken") && !squares[click].classList.contains("taken")) {
@@ -143,7 +145,11 @@ function checkWon() {
                     reset();
 
                 }
-            }, 400);
+                else {
+                    gameover = true;
+                    return;
+                }
+            }, 600);
 
         } else if (square.every(q => squares[q].classList.contains("player-two"))) {
             
@@ -154,7 +160,11 @@ function checkWon() {
                     reset();
 
                 }
-            }, 400);
+                else {
+                    gameover = true;
+                    return;
+                }
+            }, 600);
 
         }
 
@@ -167,6 +177,7 @@ function reset() {
     board.innerHTML = "";
     currentPlayer = 'blue';
     document.getElementById("playerid").style.color="cyan";
+    gameover = false;
     loadDOM();
     const divs = document.querySelectorAll('div');
     divs.forEach((div) => {
