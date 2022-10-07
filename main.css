@@ -15,6 +15,12 @@
     text-decoration: underline;
 }
 
+.scorecard {
+    margin-top: 20px;
+    font-weight: 600;
+    font-style: italic;
+}
+
 .board {
     margin: 40px auto;
     text-align: center;
@@ -58,6 +64,7 @@
 
 .playAgain {
     margin-top: 10px;
+    margin-right: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 100px;
     height: 40px;
@@ -69,6 +76,23 @@
 }
 
 .playAgain:hover {
+    background-color: rgb(180, 180, 180);
+    cursor: pointer;
+}
+
+.resetScore {
+    margin-top: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100px;
+    height: 40px;
+    background-color: rgb(200, 200, 200);
+    color: white;
+    font-weight: 600;
+    border: none;
+    transition: 0.2s ease-in-out;
+}
+
+.resetScore:hover {
     background-color: rgb(180, 180, 180);
     cursor: pointer;
 }

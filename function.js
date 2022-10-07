@@ -1,9 +1,14 @@
 // Game variables
 let board = document.querySelector(".board")
 let player = document.querySelector(".player")
+let score_blue = document.querySelector(".score_blue")
+let score_orange= document.querySelector(".score_orange")
 let playAgain = document.querySelector(".playAgain")
+let resetScore = document.querySelector(".resetScore")
 let box = 0
 let gameover = false;
+let blue_score = 0;
+let orange_score = 0;
 let winningArray = [
     [0, 1, 2, 3], [41, 40, 39, 38], [7, 8, 9, 10],
     [34, 33, 32, 31], [14, 15, 16, 17], [27, 26, 25, 24],
@@ -38,7 +43,10 @@ function loadDOM() {
 
     createBoard()
     player.innerHTML = currentPlayer
+    score_blue.innerHTML = blue_score
+    score_orange.innerHTML = orange_score 
     playAgain.addEventListener("click", reset)
+    resetScore.addEventListener("click", resetScoreFunc)
     let squares = document.querySelectorAll(".board div")
     Array.from(squares).forEach(square => {
         square.addEventListener("click", clickBox)
@@ -140,6 +148,7 @@ function checkWon() {
 
             setTimeout(function() {
                 var response = confirm("Blue player wins! Play again?");
+                blue_score += 1;
                 if (response) {
 
                     reset();
@@ -155,6 +164,7 @@ function checkWon() {
             
             setTimeout(function() {
                 var response = confirm("Orange player wins! Play again?");
+                orange_score += 1;
                 if (response) {
 
                     reset();
@@ -174,6 +184,22 @@ function checkWon() {
 // Reset game function
 function reset() {
 
+    board.innerHTML = "";
+    currentPlayer = 'blue';
+    document.getElementById("playerid").style.color="cyan";
+    gameover = false;
+    loadDOM();
+    const divs = document.querySelectorAll('div');
+    divs.forEach((div) => {
+    div.style.setProperty('--td-background-color', 'rgb(183, 255, 251)');
+    });
+    
+}
+
+function resetScoreFunc() {
+
+    blue_score = 0;
+    orange_score = 0;
     board.innerHTML = "";
     currentPlayer = 'blue';
     document.getElementById("playerid").style.color="cyan";
