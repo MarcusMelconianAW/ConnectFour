@@ -165,8 +165,9 @@ function checkWon() {
 function reset() {
 
     board.innerHTML = "";
-    loadDOM();
     currentPlayer = 'blue';
+    document.getElementById("playerid").style.color="cyan";
+    loadDOM();
     const divs = document.querySelectorAll('div');
     divs.forEach((div) => {
     div.style.setProperty('--td-background-color', 'rgb(183, 255, 251)');
